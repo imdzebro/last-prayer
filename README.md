@@ -4,7 +4,7 @@ A RuneLite plugin that shows your last active overhead prayer in a small on-scre
 
 ## What it does
 
-When you activate an overhead prayer, the overlay updates to show it. When you turn the prayer off, the overlay keeps showing the last one you had active.
+When a tracked overhead prayer is activated, the overlay shows this prayer. If the prayer is turned off the overlay will continue to display that prayer. If another tracked prayer is activated the overlay will switch to display the new prayer.
 
 ## Configuration
 
