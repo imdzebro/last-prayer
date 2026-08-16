@@ -35,10 +35,14 @@ public class LastPrayerPlugin extends Plugin
 	@Getter
 	private OverheadPrayer lastOverheadPrayer;
 
+	@Getter
+	private OverheadPrayer previousOverheadPrayer;
+
 	@Override
 	protected void startUp()
 	{
 		lastOverheadPrayer = null;
+		previousOverheadPrayer = null;
 		overlayManager.add(overlay);
 	}
 
@@ -47,6 +51,7 @@ public class LastPrayerPlugin extends Plugin
 	{
 		overlayManager.remove(overlay);
 		lastOverheadPrayer = null;
+		previousOverheadPrayer = null;
 	}
 
 	@Subscribe
@@ -56,7 +61,11 @@ public class LastPrayerPlugin extends Plugin
 		{
 			if (client.isPrayerActive(overheadPrayer.getPrayer()))
 			{
-				lastOverheadPrayer = overheadPrayer;
+				if (overheadPrayer != lastOverheadPrayer)
+				{
+					previousOverheadPrayer = lastOverheadPrayer;
+					lastOverheadPrayer = overheadPrayer;
+				}
 				return;
 			}
 		}

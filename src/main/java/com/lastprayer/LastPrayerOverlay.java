@@ -66,8 +66,6 @@ class LastPrayerOverlay extends Overlay
 			return drawText(graphics, "None", Color.GRAY);
 		}
 
-		updateCachedSprite(lastPrayer);
-
 		boolean showIcon = config.showIcon();
 		boolean showText = config.showText();
 
@@ -78,8 +76,14 @@ class LastPrayerOverlay extends Overlay
 		
 		if (!shouldShowPrayer(lastPrayer))
 		{
-			return null;
+			OverheadPrayer previousPrayer = plugin.getPreviousOverheadPrayer();
+			if(!shouldShowPrayer(previousPrayer)){
+				return null;
+			}
+			lastPrayer = previousPrayer;
 		}
+
+		updateCachedSprite(lastPrayer);
 
 		if (showIcon && showText)
 		{
