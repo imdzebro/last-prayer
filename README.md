@@ -23,5 +23,3 @@ Open the plugin settings panel in RuneLite to configure:
 - **Track Retribution** - Retribution
 - **Track Redemption** - Redemption
 - **Track Smite** - Smite
-
-The overlay position can be moved by right-clicking it in-game and selecting **Move**.
