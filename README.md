@@ -1,62 +1,27 @@
 # Last Prayer
 
-A RuneLite plugin that shows your last active overhead prayer in a small on-screen overlay — even after you turn it off.
+A RuneLite plugin that shows your last active overhead prayer in a small on-screen overlay.
 
-## Features
+## What it does
 
-- Tracks your last active overhead prayer (Protect, Smite, Redemption, etc.)
-- Small overlay panel with optional prayer icon and name
-- Configurable: enable/disable overlay, show/hide icon, hide until first prayer detected
-
-## Building
-
-### Prerequisites
-
-- Java 11 or higher
-- Maven 3.6 or higher
-
-### Build
-
-```bash
-mvn clean package
-```
-
-This creates `target/lastprayer-1.0.0.jar`.
-
-## Installing
-
-### Production (regular RuneLite client)
-
-1. Copy `target/lastprayer-1.0.0.jar` to your RuneLite plugins folder:
-   - **Windows**: `%USERPROFILE%\.runelite\plugins\`
-   - **macOS**: `~/Library/Application Support/RuneLite/plugins/`
-   - **Linux**: `~/.runelite/plugins/`
-2. Restart RuneLite
-3. Enable "Last Prayer" in the plugin list
-
-### Development client
-
-1. Build the plugin: `mvn clean package`
-2. Copy the JAR to `runelite/runelite-client/src/main/resources/plugins/`
-3. Run RuneLite from source
+When you activate an overhead prayer, the overlay updates to show it. When you turn the prayer off, the overlay keeps showing the last one you had active.
 
 ## Configuration
 
+Open the plugin settings panel in RuneLite to configure:
+
+**Display**
 - **Enable Overlay** — master toggle for the on-screen display
-- **Show Icon** — show the prayer sprite alongside the name
+- **Show Icon** — show the prayer sprite in the overlay
+- **Show Text** — show the prayer name in the overlay (disable for icon-only mode)
 - **Hide When None** — hide the overlay until you've activated an overhead prayer this session
 
-## Plugin Structure
+**Tracking** — choose which prayers are tracked and shown
+- **Track Melee** — Protect from Melee
+- **Track Range** — Protect from Missiles
+- **Track Magic** — Protect from Magic
+- **Track Retribution** — Retribution
+- **Track Redemption** — Redemption
+- **Track Smite** — Smite
 
-```
-src/main/java/com/lastprayer/
-├── LastPrayerPlugin.java    # Main plugin, game tick detection
-├── LastPrayerConfig.java    # Configuration interface
-├── LastPrayerOverlay.java   # Overlay rendering
-└── OverheadPrayer.java      # Overhead prayer enum with display names and sprites
-```
-
-## Resources
-
-- [RuneLite Wiki](https://github.com/runelite/runelite/wiki)
-- [RuneLite API Documentation](https://static.runelite.net/runelite-api/apidocs/)
+The overlay position can be moved by right-clicking it in-game and selecting **Move**.
